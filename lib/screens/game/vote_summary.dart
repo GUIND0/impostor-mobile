@@ -42,7 +42,7 @@ class VoteSummary extends StatelessWidget {
                         style: const TextStyle(fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        e.value.map((id) => room.member(id)?.name ?? '?').join(', '),
+                        'Voté par : ${e.value.map((id) => room.member(id)?.name ?? '?').join(', ')}',
                         style: const TextStyle(color: AppColors.muted, fontSize: 12),
                       ),
                     ],
