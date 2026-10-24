@@ -6,6 +6,8 @@ int _int(dynamic v) => (v as num?)?.toInt() ?? 0;
 
 class RoomSettings {
   final int rounds;
+  final int revealSeconds;
+  final String imposterMode;
   final int clueTurns;
   final String category;
   final int turnSeconds;
@@ -14,6 +16,8 @@ class RoomSettings {
 
   const RoomSettings({
     required this.rounds,
+    required this.revealSeconds,
+    required this.imposterMode,
     required this.clueTurns,
     required this.category,
     required this.turnSeconds,
@@ -23,12 +27,16 @@ class RoomSettings {
 
   factory RoomSettings.fromJson(Map<String, dynamic> json) => RoomSettings(
     rounds: _int(json['rounds']),
+    revealSeconds: json['revealSeconds'] == null ? 20 : _int(json['revealSeconds']),
+    imposterMode: json['imposterMode'] as String? ?? 'none',
     clueTurns: _int(json['clueTurns']),
     category: json['category'] as String,
     turnSeconds: _int(json['turnSeconds']),
     voteSeconds: _int(json['voteSeconds']),
     imposterSeesCategory: json['imposterSeesCategory'] as bool? ?? true,
   );
+
+  bool get similarMode => imposterMode == 'similar';
 }
 
 class RoomMember {
@@ -90,6 +98,7 @@ class Clue {
 
 class RoundResult {
   final String word;
+  final String? imposterWord;
   final String imposterId;
   final bool caught;
   final String? guess;
@@ -98,6 +107,7 @@ class RoundResult {
 
   const RoundResult({
     required this.word,
+    this.imposterWord,
     required this.imposterId,
     required this.caught,
     this.guess,
@@ -107,6 +117,7 @@ class RoundResult {
 
   factory RoundResult.fromJson(Map<String, dynamic> json) => RoundResult(
     word: json['word'] as String,
+    imposterWord: json['imposterWord'] as String?,
     imposterId: json['imposterId'] as String,
     caught: json['caught'] as bool? ?? false,
     guess: json['guess'] as String?,
@@ -117,6 +128,7 @@ class RoundResult {
 
 class RoundState {
   final int number;
+  final String mode;
   final int totalRounds;
   final String? category;
   final bool isImposter;
@@ -136,6 +148,7 @@ class RoundState {
 
   const RoundState({
     required this.number,
+    required this.mode,
     required this.totalRounds,
     this.category,
     required this.isImposter,
@@ -158,6 +171,7 @@ class RoundState {
     final you = json['you'] as Map<String, dynamic>;
     return RoundState(
       number: _int(json['number']),
+      mode: json['mode'] as String? ?? 'none',
       totalRounds: _int(json['totalRounds']),
       category: json['category'] as String?,
       isImposter: you['isImposter'] as bool? ?? false,
@@ -210,6 +224,7 @@ class RoomState {
   final String hostId;
   final Phase phase;
   final RoomSettings settings;
+  final String categoryLabel;
   final DateTime? deadline;
   final List<RoomMember> members;
   final RoundState? round;
@@ -221,6 +236,7 @@ class RoomState {
     required this.hostId,
     required this.phase,
     required this.settings,
+    required this.categoryLabel,
     this.deadline,
     required this.members,
     this.round,
@@ -235,6 +251,7 @@ class RoomState {
       hostId: json['hostId'] as String,
       phase: _phase(json['phase'] as String),
       settings: RoomSettings.fromJson(json['settings'] as Map<String, dynamic>),
+      categoryLabel: json['categoryLabel'] as String? ?? 'Aléatoire',
       deadline: deadline == null
           ? null
           : DateTime.fromMillisecondsSinceEpoch(_int(deadline)).subtract(clockOffset),

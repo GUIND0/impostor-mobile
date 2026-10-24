@@ -58,13 +58,25 @@ class ResultsView extends StatelessWidget {
                       const SizedBox(height: 16),
                       Text('Le mot était', style: const TextStyle(color: AppColors.muted)),
                       Text(result.word, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w900)),
+                      if (result.imposterWord != null) ...[
+                        const SizedBox(height: 8),
+                        Text(
+                          "L'imposteur avait : ${result.imposterWord}",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: AppColors.imposter,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                       const SizedBox(height: 8),
-                      Text(
-                        result.guess == null
-                            ? "L'imposteur n'a rien proposé"
-                            : 'Proposition : « ${result.guess} » ${result.guessCorrect ? "(correct)" : "(faux)"}',
-                        style: TextStyle(color: result.guessCorrect ? AppColors.warning : AppColors.muted),
-                      ),
+                      if (round.mode != 'similar')
+                        Text(
+                          result.guess == null
+                              ? "L'imposteur n'a rien proposé"
+                              : 'Proposition : « ${result.guess} » ${result.guessCorrect ? "(correct)" : "(faux)"}',
+                          style: TextStyle(color: result.guessCorrect ? AppColors.warning : AppColors.muted),
+                        ),
                     ],
                   ),
                 ),

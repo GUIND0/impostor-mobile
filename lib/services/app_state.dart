@@ -170,7 +170,10 @@ class AppState extends ChangeNotifier {
     );
   }
 
-  Future<void> createRoom() => emit('room:create');
+  Future<void> createRoom() {
+    unawaited(_loadCategories());
+    return emit('room:create');
+  }
 
   Future<void> joinRoom(String code) => emit('room:join', {'code': code.trim().toUpperCase()});
 

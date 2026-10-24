@@ -9,7 +9,8 @@ pas dans la même pièce. Le serveur se trouve dans le dépôt
 - Profil avec nom et photo (caméra ou galerie), modifiable à tout moment
 - Création d'une partie avec un code à partager, ou participation avec un code reçu
 - Salle d'attente en temps réel, réglages de la partie par l'hôte, retrait d'un joueur
-- Carte à retourner pour découvrir son mot en secret
+- Carte à retourner pour découvrir son mot en secret, avec un temps réglable par l'hôte
+- Deux modes : mot similaire pour l'imposteur (il ne sait pas qu'il l'est) ou classique (aucun mot)
 - Ordre de passage tiré au hasard, indices écrits ou vocaux (jusqu'à 30 secondes)
 - Vote, dernière chance de l'imposteur, détail des votes et des points
 - Classement général et historique des parties
@@ -17,9 +18,12 @@ pas dans la même pièce. Le serveur se trouve dans le dépôt
 
 ## Règles
 
-Tous les joueurs reçoivent le même mot secret, sauf l'imposteur. À tour de rôle, chacun donne un indice
+Tous les joueurs reçoivent le même mot secret, sauf l'imposteur. En mode mot similaire, l'imposteur reçoit
+un mot proche et ne sait pas qu'il est l'imposteur. En mode classique, il ne reçoit aucun mot. À tour de rôle, chacun donne un indice
 sur le mot sans le dire. Ensuite, tout le monde vote pour désigner l'imposteur. Une fois les votes
-révélés, l'imposteur peut tenter de deviner le mot.
+révélés, l'imposteur peut tenter de deviner le mot (mode classique).
+
+Les catégories et les mots se gèrent depuis l'administration web du serveur (`/admin`).
 
 | Situation | Points |
 | --- | --- |

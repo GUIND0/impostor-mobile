@@ -8,13 +8,24 @@ class RulesScreen extends StatelessWidget {
   static const _sections = [
     (
       'Le principe',
-      'Tous les joueurs reçoivent le même mot secret, sauf un : l’imposteur. Il ne connaît pas le mot '
-          'et doit faire semblant de le connaître sans se faire repérer.',
+      'Tous les joueurs reçoivent le même mot secret, sauf un : l’imposteur. Il doit se fondre dans le groupe '
+          'sans se faire repérer.',
+    ),
+    (
+      'Mode mot similaire',
+      'L’imposteur reçoit un mot proche de celui des autres (par exemple Piscine au lieu de Plage) '
+          'et ne sait pas qu’il est l’imposteur. À chacun de deviner, en écoutant les indices, '
+          's’il a le même mot que les autres.',
+    ),
+    (
+      'Mode classique',
+      'L’imposteur ne reçoit aucun mot : il sait qu’il est l’imposteur et voit seulement la catégorie '
+          'si l’hôte l’a autorisé. Il pourra tenter de deviner le mot à la fin de la manche.',
     ),
     (
       'Le mot',
-      'Au début de chaque manche, chacun touche sa carte pour découvrir son mot en secret. '
-          'L’imposteur découvre seulement qu’il est l’imposteur (et la catégorie si l’option est activée).',
+      'Au début de chaque manche, chacun touche sa carte pour découvrir son mot en secret, '
+          'dans le temps choisi par l’hôte.',
     ),
     (
       'Les indices',
@@ -26,7 +37,10 @@ class RulesScreen extends StatelessWidget {
       'Après les tours d’indices, chacun vote pour le joueur qu’il soupçonne. Le joueur qui reçoit le plus de voix est accusé. '
           'En cas d’égalité, personne n’est accusé.',
     ),
-    ('La dernière chance', 'Une fois les votes révélés, l’imposteur peut tenter de deviner le mot secret.'),
+    (
+      'La dernière chance',
+      'En mode classique, une fois les votes révélés, l’imposteur peut tenter de deviner le mot secret.',
+    ),
     (
       'Les points',
       'Imposteur démasqué : chaque joueur gagne 1 point, et 2 points s’il a voté contre l’imposteur.\n'

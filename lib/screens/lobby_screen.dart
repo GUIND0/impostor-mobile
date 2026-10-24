@@ -36,7 +36,7 @@ class LobbyScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   for (final m in room.members) _MemberTile(member: m, room: room, canKick: isHost),
                   const SizedBox(height: 24),
-                  _SettingsCard(settings: room.settings, editable: isHost),
+                  _SettingsCard(settings: room.settings, categoryLabel: room.categoryLabel, editable: isHost),
                 ],
               ),
             ),
@@ -166,9 +166,10 @@ class _MemberTile extends StatelessWidget {
 
 class _SettingsCard extends StatelessWidget {
   final RoomSettings settings;
+  final String categoryLabel;
   final bool editable;
 
-  const _SettingsCard({required this.settings, required this.editable});
+  const _SettingsCard({required this.settings, required this.categoryLabel, required this.editable});
 
   @override
   Widget build(BuildContext context) {
@@ -178,11 +179,6 @@ class _SettingsCard extends StatelessWidget {
         if (context.mounted) showError(context, e);
       });
     }
-
-    final categoryLabel = settings.category == 'random'
-        ? 'Aléatoire'
-        : state.categories.where((c) => c.id == settings.category).map((c) => c.label).firstOrNull ??
-              settings.category;
 
     return Card(
       child: Padding(
@@ -201,6 +197,16 @@ class _SettingsCard extends StatelessWidget {
               max: 10,
               enabled: editable,
               onChanged: (v) => update({'rounds': v}),
+            ),
+            _Stepper(
+              label: 'Temps pour lire son mot',
+              value: settings.revealSeconds,
+              min: 10,
+              max: 120,
+              step: 5,
+              suffix: ' s',
+              enabled: editable,
+              onChanged: (v) => update({'revealSeconds': v}),
             ),
             _Stepper(
               label: "Tours d'indices",
@@ -263,10 +269,22 @@ class _SettingsCard extends StatelessWidget {
                     },
             ),
             SwitchListTile(
-              title: const Text("L'imposteur voit la catégorie"),
-              value: settings.imposterSeesCategory,
-              onChanged: editable ? (v) => update({'imposterSeesCategory': v}) : null,
+              title: const Text("Mot similaire pour l'imposteur"),
+              subtitle: Text(
+                settings.similarMode
+                    ? "L'imposteur reçoit un mot proche et ne sait pas qu'il est l'imposteur"
+                    : "L'imposteur ne reçoit aucun mot et sait qu'il est l'imposteur",
+                style: const TextStyle(color: AppColors.muted, fontSize: 12),
+              ),
+              value: settings.similarMode,
+              onChanged: editable ? (v) => update({'imposterMode': v ? 'similar' : 'none'}) : null,
             ),
+            if (!settings.similarMode)
+              SwitchListTile(
+                title: const Text("L'imposteur voit la catégorie"),
+                value: settings.imposterSeesCategory,
+                onChanged: editable ? (v) => update({'imposterSeesCategory': v}) : null,
+              ),
           ],
         ),
       ),
