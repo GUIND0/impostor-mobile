@@ -101,6 +101,7 @@ class _RevealViewState extends State<RevealView> with SingleTickerProviderStateM
                   name: m.name,
                   url: m.avatarUrl,
                   size: 38,
+                  colorIndex: room.colorOf(m.id),
                   ring: round.seenIds.contains(m.id) ? AppColors.success : null,
                   dimmed: !m.connected,
                 ),

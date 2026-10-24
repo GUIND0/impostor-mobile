@@ -1,0 +1,161 @@
+{
+  "viewer": "fb484c84-896f-4089-a590-4973ed07648a",
+  "names": {
+    "fb484c84-896f-4089-a590-4973ed07648a": "Test Awa",
+    "7b809324-ad10-4382-8a52-532963b042f8": "Test Bakary",
+    "026601bb-5c4f-47a1-88a8-0420aea41597": "Test Coumba"
+  },
+  "plan": {
+    "fb484c84-896f-4089-a590-4973ed07648a": "026601bb-5c4f-47a1-88a8-0420aea41597",
+    "7b809324-ad10-4382-8a52-532963b042f8": "026601bb-5c4f-47a1-88a8-0420aea41597",
+    "026601bb-5c4f-47a1-88a8-0420aea41597": "fb484c84-896f-4089-a590-4973ed07648a"
+  },
+  "state": {
+    "code": "SU3QS",
+    "hostId": "fb484c84-896f-4089-a590-4973ed07648a",
+    "phase": "results",
+    "settings": {
+      "rounds": 8,
+      "revealSeconds": 60,
+      "imposterMode": "similar",
+      "clueTurns": 1,
+      "category": "random",
+      "turnSeconds": 60,
+      "voteSeconds": 60,
+      "imposterSeesCategory": true
+    },
+    "categoryLabel": "Aléatoire",
+    "deadline": null,
+    "serverTime": 1792880566541,
+    "members": [
+      {
+        "id": "fb484c84-896f-4089-a590-4973ed07648a",
+        "name": "Test Awa",
+        "avatarUrl": null,
+        "connected": true,
+        "score": 2
+      },
+      {
+        "id": "7b809324-ad10-4382-8a52-532963b042f8",
+        "name": "Test Bakary",
+        "avatarUrl": null,
+        "connected": true,
+        "score": 4
+      },
+      {
+        "id": "026601bb-5c4f-47a1-88a8-0420aea41597",
+        "name": "Test Coumba",
+        "avatarUrl": null,
+        "connected": true,
+        "score": 2
+      }
+    ],
+    "round": {
+      "number": 4,
+      "totalRounds": 8,
+      "mode": "similar",
+      "category": "Objets",
+      "you": {
+        "isImposter": false,
+        "word": "Stylo",
+        "seen": true
+      },
+      "seenIds": [
+        "fb484c84-896f-4089-a590-4973ed07648a",
+        "7b809324-ad10-4382-8a52-532963b042f8",
+        "026601bb-5c4f-47a1-88a8-0420aea41597"
+      ],
+      "order": [
+        "7b809324-ad10-4382-8a52-532963b042f8",
+        "026601bb-5c4f-47a1-88a8-0420aea41597",
+        "fb484c84-896f-4089-a590-4973ed07648a"
+      ],
+      "turn": 2,
+      "clueTurns": 1,
+      "currentSpeakerId": null,
+      "clues": [
+        {
+          "id": "c10",
+          "playerId": "7b809324-ad10-4382-8a52-532963b042f8",
+          "turn": 1,
+          "createdAt": 1792880566381,
+          "type": "text",
+          "text": "indice 1"
+        },
+        {
+          "id": "c11",
+          "playerId": "026601bb-5c4f-47a1-88a8-0420aea41597",
+          "turn": 1,
+          "createdAt": 1792880566382,
+          "type": "audio",
+          "audioUrl": "/uploads/audio/79c9a941-49b6-417d-8212-e7727481b949.m4a",
+          "durationMs": 1500
+        },
+        {
+          "id": "c12",
+          "playerId": "fb484c84-896f-4089-a590-4973ed07648a",
+          "turn": 1,
+          "createdAt": 1792880566383,
+          "type": "text",
+          "text": "indice 3"
+        }
+      ],
+      "votedIds": [
+        "fb484c84-896f-4089-a590-4973ed07648a",
+        "7b809324-ad10-4382-8a52-532963b042f8",
+        "026601bb-5c4f-47a1-88a8-0420aea41597"
+      ],
+      "myVote": "026601bb-5c4f-47a1-88a8-0420aea41597",
+      "accusedId": "026601bb-5c4f-47a1-88a8-0420aea41597",
+      "votes": {
+        "fb484c84-896f-4089-a590-4973ed07648a": "026601bb-5c4f-47a1-88a8-0420aea41597",
+        "7b809324-ad10-4382-8a52-532963b042f8": "026601bb-5c4f-47a1-88a8-0420aea41597",
+        "026601bb-5c4f-47a1-88a8-0420aea41597": "fb484c84-896f-4089-a590-4973ed07648a"
+      },
+      "result": {
+        "word": "Stylo",
+        "imposterWord": "Crayon",
+        "imposterId": "7b809324-ad10-4382-8a52-532963b042f8",
+        "caught": false,
+        "guess": null,
+        "guessCorrect": false,
+        "points": {
+          "fb484c84-896f-4089-a590-4973ed07648a": 0,
+          "7b809324-ad10-4382-8a52-532963b042f8": 2,
+          "026601bb-5c4f-47a1-88a8-0420aea41597": 0
+        }
+      }
+    },
+    "history": [
+      {
+        "number": 1,
+        "word": "Chocolat",
+        "imposterWord": "Caramel",
+        "imposterId": "7b809324-ad10-4382-8a52-532963b042f8",
+        "caught": false
+      },
+      {
+        "number": 2,
+        "word": "Natation",
+        "imposterWord": "Plongée",
+        "imposterId": "026601bb-5c4f-47a1-88a8-0420aea41597",
+        "caught": false
+      },
+      {
+        "number": 3,
+        "word": "Horloge",
+        "imposterWord": "Réveil",
+        "imposterId": "fb484c84-896f-4089-a590-4973ed07648a",
+        "caught": false
+      },
+      {
+        "number": 4,
+        "word": "Stylo",
+        "imposterWord": "Crayon",
+        "imposterId": "7b809324-ad10-4382-8a52-532963b042f8",
+        "caught": false
+      }
+    ],
+    "ranking": null
+  }
+}

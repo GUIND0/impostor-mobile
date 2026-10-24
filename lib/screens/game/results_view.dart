@@ -47,6 +47,7 @@ class ResultsView extends StatelessWidget {
                       Avatar(
                         name: imposter?.name ?? '?',
                         url: imposter?.avatarUrl,
+                        colorIndex: room.colorOf(result.imposterId),
                         size: 90,
                         ring: AppColors.imposter,
                       ),
@@ -104,6 +105,7 @@ class ResultsView extends StatelessWidget {
                   gained: result.points[standings[i].id] ?? 0,
                   isMe: standings[i].id == me,
                   highlightWinner: finished,
+                  colorIndex: room.colorOf(standings[i].id),
                 ),
             ],
           ),
@@ -123,6 +125,7 @@ class _ScoreRow extends StatelessWidget {
   final int gained;
   final bool isMe;
   final bool highlightWinner;
+  final int? colorIndex;
 
   const _ScoreRow({
     required this.position,
@@ -130,6 +133,7 @@ class _ScoreRow extends StatelessWidget {
     required this.gained,
     required this.isMe,
     required this.highlightWinner,
+    this.colorIndex,
   });
 
   @override
@@ -138,7 +142,12 @@ class _ScoreRow extends StatelessWidget {
     return Card(
       color: isMe ? AppColors.surfaceHigh : null,
       child: ListTile(
-        leading: Avatar(name: member.name, url: member.avatarUrl, ring: winner ? AppColors.warning : null),
+        leading: Avatar(
+          name: member.name,
+          url: member.avatarUrl,
+          ring: winner ? AppColors.warning : null,
+          colorIndex: colorIndex,
+        ),
         title: Text('$position. ${member.name}', style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: winner ? const Text('Vainqueur', style: TextStyle(color: AppColors.warning)) : null,
         trailing: Row(

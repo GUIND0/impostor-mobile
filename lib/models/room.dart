@@ -266,6 +266,11 @@ class RoomState {
     );
   }
 
+  int? colorOf(String? id) {
+    final index = members.indexWhere((m) => m.id == id);
+    return index < 0 ? null : index;
+  }
+
   RoomMember? member(String? id) {
     if (id == null) return null;
     for (final m in members) {

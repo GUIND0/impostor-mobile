@@ -9,8 +9,9 @@ class ClueBubble extends StatelessWidget {
   final Clue clue;
   final RoomMember? author;
   final bool mine;
+  final int? colorIndex;
 
-  const ClueBubble({super.key, required this.clue, this.author, this.mine = false});
+  const ClueBubble({super.key, required this.clue, this.author, this.mine = false, this.colorIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class ClueBubble extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Avatar(name: name, url: author?.avatarUrl, size: 36),
+          Avatar(name: name, url: author?.avatarUrl, size: 36, colorIndex: colorIndex),
           const SizedBox(width: 10),
           Flexible(
             child: Container(
@@ -93,7 +94,14 @@ class ClueList extends StatelessWidget {
         ),
       );
       for (final c in clues) {
-        items.add(ClueBubble(clue: c, author: room.member(c.playerId), mine: c.playerId == myId));
+        items.add(
+          ClueBubble(
+            clue: c,
+            author: room.member(c.playerId),
+            mine: c.playerId == myId,
+            colorIndex: room.colorOf(c.playerId),
+          ),
+        );
       }
     }
     if (items.isEmpty) {

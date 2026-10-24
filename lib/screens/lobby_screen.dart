@@ -137,7 +137,12 @@ class _MemberTile extends StatelessWidget {
     final isHost = member.id == room.hostId;
     return Card(
       child: ListTile(
-        leading: Avatar(name: member.name, url: member.avatarUrl, dimmed: !member.connected),
+        leading: Avatar(
+          name: member.name,
+          url: member.avatarUrl,
+          dimmed: !member.connected,
+          colorIndex: room.colorOf(member.id),
+        ),
         title: Text(isMe ? '${member.name} (vous)' : member.name),
         subtitle: !member.connected ? const Text('Déconnecté') : null,
         trailing: Row(

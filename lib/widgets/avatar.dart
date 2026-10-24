@@ -13,6 +13,7 @@ class Avatar extends StatelessWidget {
   final double size;
   final Color? ring;
   final bool dimmed;
+  final int? colorIndex;
 
   const Avatar({
     super.key,
@@ -22,19 +23,26 @@ class Avatar extends StatelessWidget {
     this.size = 48,
     this.ring,
     this.dimmed = false,
+    this.colorIndex,
   });
 
   Color get _color {
     const palette = [
       Color(0xFF8B5CF6),
-      Color(0xFF06B6D4),
       Color(0xFFF97316),
       Color(0xFF10B981),
       Color(0xFFEC4899),
       Color(0xFF3B82F6),
       Color(0xFFEAB308),
+      Color(0xFF06B6D4),
+      Color(0xFFEF4444),
+      Color(0xFF84CC16),
+      Color(0xFFA16207),
+      Color(0xFF6366F1),
+      Color(0xFF64748B),
     ];
-    return palette[name.codeUnits.fold<int>(0, (a, b) => a + b) % palette.length];
+    final index = colorIndex ?? name.codeUnits.fold<int>(0, (a, b) => a + b);
+    return palette[index % palette.length];
   }
 
   @override

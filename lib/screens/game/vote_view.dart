@@ -71,7 +71,7 @@ class _VoteViewState extends State<VoteView> {
               maxCrossAxisExtent: 130,
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
-              childAspectRatio: 0.82,
+              childAspectRatio: 0.72,
             ),
             itemCount: candidates.length,
             itemBuilder: (context, i) {
@@ -92,7 +92,13 @@ class _VoteViewState extends State<VoteView> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Avatar(name: m.name, url: m.avatarUrl, size: 60, dimmed: !m.connected),
+                      Avatar(
+                        name: m.name,
+                        url: m.avatarUrl,
+                        size: 56,
+                        dimmed: !m.connected,
+                        colorIndex: room.colorOf(m.id),
+                      ),
                       const SizedBox(height: 8),
                       Text(
                         m.name,
@@ -139,6 +145,7 @@ class _VoteViewState extends State<VoteView> {
                       name: m.name,
                       url: m.avatarUrl,
                       size: 30,
+                      colorIndex: room.colorOf(m.id),
                       ring: round.votedIds.contains(m.id) ? AppColors.success : null,
                       dimmed: !round.votedIds.contains(m.id),
                     ),

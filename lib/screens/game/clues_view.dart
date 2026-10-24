@@ -66,6 +66,7 @@ class _CluesViewState extends State<CluesView> {
                     name: m?.name ?? '?',
                     url: m?.avatarUrl,
                     size: current ? 48 : 40,
+                    colorIndex: room.colorOf(round.order[i]),
                     ring: current ? AppColors.primary : null,
                     dimmed: m?.connected == false,
                   ),

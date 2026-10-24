@@ -30,6 +30,7 @@ class VoteSummary extends StatelessWidget {
                   name: room.member(e.key)?.name ?? '?',
                   url: room.member(e.key)?.avatarUrl,
                   size: 40,
+                  colorIndex: room.colorOf(e.key),
                   ring: e.key == highlightId ? AppColors.imposter : null,
                 ),
                 const SizedBox(width: 10),

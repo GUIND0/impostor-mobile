@@ -51,7 +51,13 @@ class _GuessViewState extends State<GuessView> {
             child: Column(
               children: [
                 if (accused != null) ...[
-                  Avatar(name: accused.name, url: accused.avatarUrl, size: 84, ring: AppColors.imposter),
+                  Avatar(
+                    name: accused.name,
+                    url: accused.avatarUrl,
+                    size: 84,
+                    ring: AppColors.imposter,
+                    colorIndex: room.colorOf(accused.id),
+                  ),
                   const SizedBox(height: 12),
                   Text(
                     '${accused.name} est accusé${accused.id == state.player!.id ? " (vous)" : ""}',
