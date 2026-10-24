@@ -16,7 +16,7 @@ class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
 
   int _phaseSeconds(RoomState room) => switch (room.phase) {
-    Phase.reveal => 90,
+    Phase.reveal => 20,
     Phase.clues => room.settings.turnSeconds,
     Phase.voting => room.settings.voteSeconds,
     Phase.guess => 30,
